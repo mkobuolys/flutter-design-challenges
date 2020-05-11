@@ -1,3 +1,4 @@
 # Flutter Design Challenges
 ## Onboarding concept
-![Onboarding Concept](assets/onboarding-concept.gif =250x)
+
+<img src="assets/onboarding-concept.gif" alt="Onboarding Concept" width="250">

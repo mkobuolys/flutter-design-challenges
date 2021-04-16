@@ -6,6 +6,8 @@ import 'package:onboarding_concept_static/screens/login/widgets/header.dart';
 import 'package:onboarding_concept_static/screens/login/widgets/login_form.dart';
 
 class Login extends StatefulWidget {
+  const Login();
+
   @override
   _LoginState createState() => _LoginState();
 }
@@ -19,28 +21,22 @@ class _LoginState extends State<Login> {
       body: Stack(
         children: <Widget>[
           ClipPath(
-            clipper: WhiteTopClipper(),
-            child: Container(
-              color: kGrey,
-            ),
+            clipper: const WhiteTopClipper(),
+            child: Container(color: kGrey),
           ),
           ClipPath(
-            clipper: GreyTopClipper(),
-            child: Container(
-              color: kBlue,
-            ),
+            clipper: const GreyTopClipper(),
+            child: Container(color: kBlue),
           ),
           ClipPath(
-            clipper: BlueTopClipper(),
-            child: Container(
-              color: kWhite,
-            ),
+            clipper: const BlueTopClipper(),
+            child: Container(color: kWhite),
           ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: kPaddingL),
               child: Column(
-                children: <Widget>[
+                children: const <Widget>[
                   Header(),
                   Spacer(),
                   LoginForm(),

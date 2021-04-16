@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept/constants.dart';
+import '../../../constants.dart';
 
 class CardsStack extends StatelessWidget {
   final int pageNumber;
@@ -11,31 +10,25 @@ class CardsStack extends StatelessWidget {
   final Animation<Offset> darkCardOffsetAnimation;
 
   const CardsStack({
-    @required this.pageNumber,
-    @required this.lightCardChild,
-    @required this.darkCardChild,
-    @required this.lightCardOffsetAnimation,
-    @required this.darkCardOffsetAnimation,
-  })  : assert(pageNumber != null),
-        assert(lightCardChild != null),
-        assert(darkCardChild != null),
-        assert(lightCardOffsetAnimation != null),
-        assert(darkCardOffsetAnimation != null);
+    required this.pageNumber,
+    required this.lightCardChild,
+    required this.darkCardChild,
+    required this.lightCardOffsetAnimation,
+    required this.darkCardOffsetAnimation,
+  });
 
   bool get isOddPageNumber => pageNumber % 2 == 1;
 
   @override
   Widget build(BuildContext context) {
-    var darkCardWidth = MediaQuery.of(context).size.width - 2 * kPaddingL;
-    var darkCardHeight = MediaQuery.of(context).size.height / 3;
+    final darkCardWidth = MediaQuery.of(context).size.width - 2 * kPaddingL;
+    final darkCardHeight = MediaQuery.of(context).size.height / 3;
 
     return Padding(
-      padding: EdgeInsets.only(
-        top: isOddPageNumber ? 25.0 : 50.0,
-      ),
+      padding: EdgeInsets.only(top: isOddPageNumber ? 25.0 : 50.0),
       child: Stack(
         alignment: AlignmentDirectional.center,
-        overflow: Overflow.visible,
+        clipBehavior: Clip.none,
         children: <Widget>[
           SlideTransition(
             position: darkCardOffsetAnimation,
@@ -51,9 +44,7 @@ class CardsStack extends StatelessWidget {
                   top: !isOddPageNumber ? 100.0 : 0.0,
                   bottom: isOddPageNumber ? 100.0 : 0.0,
                 ),
-                child: Center(
-                  child: darkCardChild,
-                ),
+                child: Center(child: darkCardChild),
               ),
             ),
           ),
@@ -71,9 +62,7 @@ class CardsStack extends StatelessWidget {
                   width: darkCardWidth * 0.8,
                   height: darkCardHeight * 0.5,
                   padding: const EdgeInsets.symmetric(horizontal: kPaddingM),
-                  child: Center(
-                    child: lightCardChild,
-                  ),
+                  child: Center(child: lightCardChild),
                 ),
               ),
             ),

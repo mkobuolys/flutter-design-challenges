@@ -1,18 +1,17 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept/constants.dart';
+import '../../../constants.dart';
 
 class Ripple extends StatelessWidget {
   final double radius;
 
   const Ripple({
-    @required this.radius,
-  }) : assert(radius != null);
+    required this.radius,
+  });
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Positioned(
       left: screenWidth / 2 - radius,
@@ -20,7 +19,7 @@ class Ripple extends StatelessWidget {
       child: Container(
         width: 2 * radius,
         height: 2 * radius,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: kWhite,
         ),

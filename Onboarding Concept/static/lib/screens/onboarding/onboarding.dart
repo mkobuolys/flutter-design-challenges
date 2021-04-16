@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept_static/constants.dart';
-import 'package:onboarding_concept_static/screens/login/login.dart';
-import 'package:onboarding_concept_static/screens/onboarding/pages/community/index.dart';
-import 'package:onboarding_concept_static/screens/onboarding/pages/education/index.dart';
-import 'package:onboarding_concept_static/screens/onboarding/pages/onboarding_page.dart';
-import 'package:onboarding_concept_static/screens/onboarding/pages/work/index.dart';
-import 'package:onboarding_concept_static/screens/onboarding/widgets/header.dart';
-import 'package:onboarding_concept_static/screens/onboarding/widgets/next_page_button.dart';
-import 'package:onboarding_concept_static/screens/onboarding/widgets/onboarding_page_indicator.dart';
+import '../../constants.dart';
+import '../login/login.dart';
+import 'pages/community/index.dart';
+import 'pages/education/index.dart';
+import 'pages/onboarding_page.dart';
+import 'pages/work/index.dart';
+import 'widgets/header.dart';
+import 'widgets/next_page_button.dart';
+import 'widgets/onboarding_page_indicator.dart';
 
 class Onboarding extends StatefulWidget {
+  const Onboarding();
+
   @override
   _OnboardingState createState() => _OnboardingState();
 }
@@ -23,21 +25,21 @@ class _OnboardingState extends State<Onboarding> {
   Widget _getPage() {
     switch (_currentPage) {
       case 1:
-        return OnboardingPage(
+        return const OnboardingPage(
           number: 1,
           lightCardChild: CommunityLightCardContent(),
           darkCardChild: CommunityDarkCardContent(),
           textColumn: CommunityTextColumn(),
         );
       case 2:
-        return OnboardingPage(
+        return const OnboardingPage(
           number: 2,
           lightCardChild: EducationLightCardContent(),
           darkCardChild: EducationDarkCardContent(),
           textColumn: EducationTextColumn(),
         );
       case 3:
-        return OnboardingPage(
+        return const OnboardingPage(
           number: 3,
           lightCardChild: WorkLightCardContent(),
           darkCardChild: WorkDarkCardContent(),
@@ -70,9 +72,7 @@ class _OnboardingState extends State<Onboarding> {
 
   void _goToLogin() {
     Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => Login(),
-      ),
+      MaterialPageRoute(builder: (_) => const Login()),
     );
   }
 
@@ -85,17 +85,11 @@ class _OnboardingState extends State<Onboarding> {
           padding: const EdgeInsets.all(kPaddingL),
           child: Column(
             children: <Widget>[
-              Header(
-                onSkip: _goToLogin,
-              ),
-              Expanded(
-                child: _getPage(),
-              ),
+              Header(onSkip: _goToLogin),
+              Expanded(child: _getPage()),
               OnboardingPageIndicator(
                 currentPage: _currentPage,
-                child: NextPageButton(
-                  onPressed: _nextPage,
-                ),
+                child: NextPageButton(onPressed: _nextPage),
               ),
             ],
           ),

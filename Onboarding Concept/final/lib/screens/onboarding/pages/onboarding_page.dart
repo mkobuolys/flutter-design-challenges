@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept/constants.dart';
-import 'package:onboarding_concept/screens/onboarding/widgets/cards_stack.dart';
+import '../../../constants.dart';
+import '../widgets/cards_stack.dart';
 
 class OnboardingPage extends StatelessWidget {
   final int number;
@@ -13,18 +12,13 @@ class OnboardingPage extends StatelessWidget {
   final Widget textColumn;
 
   const OnboardingPage({
-    @required this.number,
-    @required this.lightCardChild,
-    @required this.darkCardChild,
-    @required this.lightCardOffsetAnimation,
-    @required this.darkCardOffsetAnimation,
-    @required this.textColumn,
-  })  : assert(number != null),
-        assert(lightCardChild != null),
-        assert(darkCardChild != null),
-        assert(lightCardOffsetAnimation != null),
-        assert(darkCardOffsetAnimation != null),
-        assert(textColumn != null);
+    required this.number,
+    required this.lightCardChild,
+    required this.darkCardChild,
+    required this.lightCardOffsetAnimation,
+    required this.darkCardOffsetAnimation,
+    required this.textColumn,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +31,7 @@ class OnboardingPage extends StatelessWidget {
           lightCardOffsetAnimation: lightCardOffsetAnimation,
           darkCardOffsetAnimation: darkCardOffsetAnimation,
         ),
-        SizedBox(
-          height: number % 2 == 1 ? 50.0 : 25.0,
-        ),
+        SizedBox(height: number % 2 == 1 ? 50.0 : 25.0),
         AnimatedSwitcher(
           duration: kCardAnimationDuration,
           child: textColumn,

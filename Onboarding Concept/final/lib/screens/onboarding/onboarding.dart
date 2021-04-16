@@ -1,39 +1,38 @@
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept/constants.dart';
-import 'package:onboarding_concept/screens/login/login.dart';
-import 'package:onboarding_concept/screens/onboarding/pages/community/index.dart';
-import 'package:onboarding_concept/screens/onboarding/pages/education/index.dart';
-import 'package:onboarding_concept/screens/onboarding/pages/onboarding_page.dart';
-import 'package:onboarding_concept/screens/onboarding/pages/work/index.dart';
-import 'package:onboarding_concept/screens/onboarding/widgets/header.dart';
-import 'package:onboarding_concept/screens/onboarding/widgets/next_page_button.dart';
-import 'package:onboarding_concept/screens/onboarding/widgets/onboarding_page_indicator.dart';
-import 'package:onboarding_concept/screens/onboarding/widgets/ripple.dart';
+import '../../constants.dart';
+import '../login/login.dart';
+import 'pages/community/index.dart';
+import 'pages/education/index.dart';
+import 'pages/onboarding_page.dart';
+import 'pages/work/index.dart';
+import 'widgets/header.dart';
+import 'widgets/next_page_button.dart';
+import 'widgets/onboarding_page_indicator.dart';
+import 'widgets/ripple.dart';
 
 class Onboarding extends StatefulWidget {
   final double screenHeight;
 
   const Onboarding({
-    @required this.screenHeight,
-  }) : assert(screenHeight != null);
+    required this.screenHeight,
+  });
 
   @override
   _OnboardingState createState() => _OnboardingState();
 }
 
 class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
-  AnimationController _cardsAnimationController;
-  AnimationController _pageIndicatorAnimationController;
-  AnimationController _rippleAnimationController;
+  late final AnimationController _cardsAnimationController;
+  late final AnimationController _pageIndicatorAnimationController;
+  late final AnimationController _rippleAnimationController;
 
-  Animation<Offset> _slideAnimationLightCard;
-  Animation<Offset> _slideAnimationDarkCard;
-  Animation<double> _pageIndicatorAnimation;
-  Animation<double> _rippleAnimation;
+  late Animation<Offset> _slideAnimationLightCard;
+  late Animation<Offset> _slideAnimationDarkCard;
+  late Animation<double> _pageIndicatorAnimation;
+  late Animation<double> _rippleAnimation;
 
   int _currentPage = 1;
 
@@ -80,29 +79,29 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
       case 1:
         return OnboardingPage(
           number: 1,
-          lightCardChild: CommunityLightCardContent(),
-          darkCardChild: CommunityDarkCardContent(),
+          lightCardChild: const CommunityLightCardContent(),
+          darkCardChild: const CommunityDarkCardContent(),
           lightCardOffsetAnimation: _slideAnimationLightCard,
           darkCardOffsetAnimation: _slideAnimationDarkCard,
-          textColumn: CommunityTextColumn(),
+          textColumn: const CommunityTextColumn(),
         );
       case 2:
         return OnboardingPage(
           number: 2,
-          lightCardChild: EducationLightCardContent(),
-          darkCardChild: EducationDarkCardContent(),
+          lightCardChild: const EducationLightCardContent(),
+          darkCardChild: const EducationDarkCardContent(),
           lightCardOffsetAnimation: _slideAnimationLightCard,
           darkCardOffsetAnimation: _slideAnimationDarkCard,
-          textColumn: EducationTextColumn(),
+          textColumn: const EducationTextColumn(),
         );
       case 3:
         return OnboardingPage(
           number: 3,
-          lightCardChild: WorkLightCardContent(),
-          darkCardChild: WorkDarkCardContent(),
+          lightCardChild: const WorkLightCardContent(),
+          darkCardChild: const WorkDarkCardContent(),
           lightCardOffsetAnimation: _slideAnimationLightCard,
           darkCardOffsetAnimation: _slideAnimationDarkCard,
-          textColumn: WorkTextColumn(),
+          textColumn: const WorkTextColumn(),
         );
       default:
         throw Exception("Page with number '$_currentPage' does not exist.");
@@ -112,14 +111,14 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
   void _setCardsSlideInAnimation() {
     setState(() {
       _slideAnimationLightCard = Tween<Offset>(
-        begin: Offset(3.0, 0.0),
+        begin: const Offset(3.0, 0.0),
         end: Offset.zero,
       ).animate(CurvedAnimation(
         parent: _cardsAnimationController,
         curve: Curves.easeOut,
       ));
       _slideAnimationDarkCard = Tween<Offset>(
-        begin: Offset(1.5, 0.0),
+        begin: const Offset(1.5, 0.0),
         end: Offset.zero,
       ).animate(CurvedAnimation(
         parent: _cardsAnimationController,
@@ -133,14 +132,14 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
     setState(() {
       _slideAnimationLightCard = Tween<Offset>(
         begin: Offset.zero,
-        end: Offset(-3.0, 0.0),
+        end: const Offset(-3.0, 0.0),
       ).animate(CurvedAnimation(
         parent: _cardsAnimationController,
         curve: Curves.easeIn,
       ));
       _slideAnimationDarkCard = Tween<Offset>(
         begin: Offset.zero,
-        end: Offset(-1.5, 0.0),
+        end: const Offset(-1.5, 0.0),
       ).animate(CurvedAnimation(
         parent: _cardsAnimationController,
         curve: Curves.easeIn,
@@ -150,7 +149,7 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
   }
 
   void _setPageIndicatorAnimation({bool isClockwiseAnimation = true}) {
-    var multiplicator = isClockwiseAnimation ? 2 : -2;
+    final multiplicator = isClockwiseAnimation ? 2 : -2;
 
     setState(() {
       _pageIndicatorAnimation = Tween(
@@ -206,9 +205,7 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
     await _rippleAnimationController.forward();
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => Login(
-          screenHeight: widget.screenHeight,
-        ),
+        builder: (_) => Login(screenHeight: widget.screenHeight),
       ),
     );
   }
@@ -224,24 +221,18 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
               padding: const EdgeInsets.all(kPaddingL),
               child: Column(
                 children: <Widget>[
-                  Header(
-                    onSkip: () async => await _goToLogin(),
-                  ),
-                  Expanded(
-                    child: _getPage(),
-                  ),
+                  Header(onSkip: _goToLogin),
+                  Expanded(child: _getPage()),
                   AnimatedBuilder(
                     animation: _pageIndicatorAnimation,
-                    child: NextPageButton(
-                      onPressed: () async => await _nextPage(),
-                    ),
-                    builder: (_, Widget child) {
+                    builder: (_, Widget? child) {
                       return OnboardingPageIndicator(
                         angle: _pageIndicatorAnimation.value,
                         currentPage: _currentPage,
-                        child: child,
+                        child: child!,
                       );
                     },
+                    child: NextPageButton(onPressed: _nextPage),
                   ),
                 ],
               ),
@@ -249,10 +240,8 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
           ),
           AnimatedBuilder(
             animation: _rippleAnimation,
-            builder: (_, Widget child) {
-              return Ripple(
-                radius: _rippleAnimation.value,
-              );
+            builder: (_, Widget? child) {
+              return Ripple(radius: _rippleAnimation.value);
             },
           ),
         ],

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept_static/constants.dart';
-import 'package:onboarding_concept_static/widgets/logo.dart';
+import '../../../constants.dart';
+import '../../../widgets/logo.dart';
 
 class Header extends StatelessWidget {
+  const Header();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -11,7 +13,7 @@ class Header extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Logo(
+          const Logo(
             color: kBlue,
             size: 48.0,
           ),
@@ -20,7 +22,7 @@ class Header extends StatelessWidget {
             'Welcome to Bubble',
             style: Theme.of(context)
                 .textTheme
-                .headline5
+                .headline5!
                 .copyWith(color: kBlack, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: kSpaceS),
@@ -28,7 +30,7 @@ class Header extends StatelessWidget {
             'Est ad dolor aute ex commodo tempor exercitation proident.',
             style: Theme.of(context)
                 .textTheme
-                .subtitle1
+                .subtitle1!
                 .copyWith(color: kBlack.withOpacity(0.5)),
           ),
         ],

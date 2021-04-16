@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Logo extends StatelessWidget {
@@ -8,10 +7,9 @@ class Logo extends StatelessWidget {
   final double size;
 
   const Logo({
-    @required this.color,
-    @required this.size,
-  })  : assert(color != null),
-        assert(size != null);
+    required this.color,
+    required this.size,
+  });
 
   @override
   Widget build(BuildContext context) {

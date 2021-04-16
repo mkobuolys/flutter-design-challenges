@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept_static/constants.dart';
+import '../../../constants.dart';
 
 class TextColumn extends StatelessWidget {
   final String title;
   final String text;
 
   const TextColumn({
-    @required this.title,
-    @required this.text,
-  })  : assert(title != null),
-        assert(text != null);
+    required this.title,
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +17,16 @@ class TextColumn extends StatelessWidget {
       children: <Widget>[
         Text(
           title,
+          textAlign: TextAlign.center,
           style: Theme.of(context)
               .textTheme
-              .headline5
+              .headline5!
               .copyWith(color: kWhite, fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
         ),
         const SizedBox(height: kSpaceS),
         Text(
           text,
-          style: Theme.of(context).textTheme.subtitle1.copyWith(color: kWhite),
+          style: Theme.of(context).textTheme.subtitle1!.copyWith(color: kWhite),
           textAlign: TextAlign.center,
         ),
       ],

@@ -1,17 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept/constants.dart';
+import '../../../constants.dart';
 
 class IconContainer extends StatelessWidget {
   final IconData icon;
   final double padding;
 
   const IconContainer({
-    @required this.icon,
-    @required this.padding,
-  })  : assert(icon != null),
-        assert(padding != null);
+    required this.icon,
+    required this.padding,
+  });
 
   @override
   Widget build(BuildContext context) {

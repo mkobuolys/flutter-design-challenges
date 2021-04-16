@@ -1,23 +1,22 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept/constants.dart';
-import 'package:onboarding_concept/screens/login/widgets/custom_button.dart';
-import 'package:onboarding_concept/screens/login/widgets/custom_input_field.dart';
-import 'package:onboarding_concept/screens/login/widgets/fade_slide_transition.dart';
+import '../../../constants.dart';
+import 'custom_button.dart';
+import 'custom_input_field.dart';
+import 'fade_slide_transition.dart';
 
 class LoginForm extends StatelessWidget {
   final Animation<double> animation;
 
   const LoginForm({
-    @required this.animation,
-  }) : assert(animation != null);
+    required this.animation,
+  });
 
   @override
   Widget build(BuildContext context) {
-    var height =
+    final height =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
-    var space = height > 650 ? kSpaceM : kSpaceS;
+    final space = height > 650 ? kSpaceM : kSpaceS;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kPaddingL),
@@ -26,7 +25,7 @@ class LoginForm extends StatelessWidget {
           FadeSlideTransition(
             animation: animation,
             additionalOffset: 0.0,
-            child: CustomInputField(
+            child: const CustomInputField(
               label: 'Username or Email',
               prefixIcon: Icons.person,
               obscureText: true,
@@ -36,7 +35,7 @@ class LoginForm extends StatelessWidget {
           FadeSlideTransition(
             animation: animation,
             additionalOffset: space,
-            child: CustomInputField(
+            child: const CustomInputField(
               label: 'Password',
               prefixIcon: Icons.lock,
               obscureText: true,
@@ -61,7 +60,7 @@ class LoginForm extends StatelessWidget {
               color: kWhite,
               textColor: kBlack.withOpacity(0.5),
               text: 'Continue with Google',
-              image: Image(
+              image: const Image(
                 image: AssetImage(kGoogleLogoPath),
                 height: 48.0,
               ),

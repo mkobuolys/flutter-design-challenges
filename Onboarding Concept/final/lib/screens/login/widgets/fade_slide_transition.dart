@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class FadeSlideTransition extends StatelessWidget {
@@ -7,19 +6,16 @@ class FadeSlideTransition extends StatelessWidget {
   final Widget child;
 
   const FadeSlideTransition({
-    @required this.animation,
-    @required this.additionalOffset,
-    @required this.child,
-  })  : assert(animation != null),
-        assert(additionalOffset != null),
-        assert(child != null);
+    required this.animation,
+    required this.additionalOffset,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: animation,
-      child: child,
-      builder: (_, Widget builderChild) {
+      builder: (_, Widget? builderChild) {
         return Transform.translate(
           offset: Offset(
             0.0,
@@ -31,6 +27,7 @@ class FadeSlideTransition extends StatelessWidget {
           ),
         );
       },
+      child: child,
     );
   }
 }

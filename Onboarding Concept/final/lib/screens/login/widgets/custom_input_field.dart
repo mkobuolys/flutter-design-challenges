@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept/constants.dart';
+import '../../../constants.dart';
 
 class CustomInputField extends StatelessWidget {
   final String label;
@@ -9,11 +8,10 @@ class CustomInputField extends StatelessWidget {
   final bool obscureText;
 
   const CustomInputField({
-    @required this.label,
-    @required this.prefixIcon,
+    required this.label,
+    required this.prefixIcon,
     this.obscureText = false,
-  })  : assert(label != null),
-        assert(prefixIcon != null);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +19,10 @@ class CustomInputField extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(kPaddingM),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.12),
-          ),
+          borderSide: BorderSide(color: Colors.black.withOpacity(0.12)),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.12),
-          ),
+          borderSide: BorderSide(color: Colors.black.withOpacity(0.12)),
         ),
         hintText: label,
         hintStyle: TextStyle(

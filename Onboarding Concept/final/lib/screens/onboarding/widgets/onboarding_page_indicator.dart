@@ -1,9 +1,8 @@
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept/constants.dart';
+import '../../../constants.dart';
 
 class OnboardingPageIndicator extends StatelessWidget {
   final double angle;
@@ -11,12 +10,10 @@ class OnboardingPageIndicator extends StatelessWidget {
   final Widget child;
 
   const OnboardingPageIndicator({
-    @required this.angle,
-    @required this.currentPage,
-    @required this.child,
-  })  : assert(angle != null),
-        assert(currentPage != null),
-        assert(child != null);
+    required this.angle,
+    required this.currentPage,
+    required this.child,
+  });
 
   Color _getPageIndicatorColor(int pageIndex) {
     return currentPage > pageIndex ? kWhite : kWhite.withOpacity(0.25);
@@ -27,30 +24,28 @@ class OnboardingPageIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CustomPaint(
+      painter: _OnboardignPageIndicatorPainter(
+        color: _getPageIndicatorColor(0),
+        startAngle:
+            (4 * indicatorLength) - (indicatorLength + indicatorGap) + angle,
+        indicatorLength: indicatorLength,
+      ),
       child: CustomPaint(
         painter: _OnboardignPageIndicatorPainter(
-          color: _getPageIndicatorColor(0),
-          startAngle:
-              (4 * indicatorLength) - (indicatorLength + indicatorGap) + angle,
+          color: _getPageIndicatorColor(1),
+          startAngle: 4 * indicatorLength + angle,
           indicatorLength: indicatorLength,
         ),
         child: CustomPaint(
           painter: _OnboardignPageIndicatorPainter(
-            color: _getPageIndicatorColor(1),
-            startAngle: 4 * indicatorLength + angle,
+            color: _getPageIndicatorColor(2),
+            startAngle: (4 * indicatorLength) +
+                (indicatorLength + indicatorGap) +
+                angle,
             indicatorLength: indicatorLength,
           ),
-          child: CustomPaint(
-            painter: _OnboardignPageIndicatorPainter(
-              color: _getPageIndicatorColor(2),
-              startAngle: (4 * indicatorLength) +
-                  (indicatorLength + indicatorGap) +
-                  angle,
-              indicatorLength: indicatorLength,
-            ),
-            child: child,
-          ),
+          child: child,
         ),
       ),
     );
@@ -63,16 +58,14 @@ class _OnboardignPageIndicatorPainter extends CustomPainter {
   final double indicatorLength;
 
   const _OnboardignPageIndicatorPainter({
-    @required this.color,
-    @required this.startAngle,
-    @required this.indicatorLength,
-  })  : assert(color != null),
-        assert(startAngle != null),
-        assert(indicatorLength != null);
+    required this.color,
+    required this.startAngle,
+    required this.indicatorLength,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint()
+    final paint = Paint()
       ..color = color
       ..style = PaintingStyle.stroke
       ..strokeWidth = 4.0;
@@ -91,7 +84,6 @@ class _OnboardignPageIndicatorPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_OnboardignPageIndicatorPainter oldDelegate) {
-    return this.color != oldDelegate.color ||
-        this.startAngle != oldDelegate.startAngle;
+    return color != oldDelegate.color || startAngle != oldDelegate.startAngle;
   }
 }

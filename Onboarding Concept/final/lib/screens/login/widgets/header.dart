@@ -1,16 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept/constants.dart';
-import 'package:onboarding_concept/screens/login/widgets/fade_slide_transition.dart';
-import 'package:onboarding_concept/widgets/logo.dart';
+import '../../../constants.dart';
+import '../../../widgets/logo.dart';
+import 'fade_slide_transition.dart';
 
 class Header extends StatelessWidget {
   final Animation<double> animation;
 
   const Header({
-    @required this.animation,
-  }) : assert(animation != null);
+    required this.animation,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class Header extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Logo(
+          const Logo(
             color: kBlue,
             size: 48.0,
           ),
@@ -31,7 +30,7 @@ class Header extends StatelessWidget {
               'Welcome to Bubble',
               style: Theme.of(context)
                   .textTheme
-                  .headline5
+                  .headline5!
                   .copyWith(color: kBlack, fontWeight: FontWeight.bold),
             ),
           ),
@@ -43,7 +42,7 @@ class Header extends StatelessWidget {
               'Est ad dolor aute ex commodo tempor exercitation proident.',
               style: Theme.of(context)
                   .textTheme
-                  .subtitle1
+                  .subtitle1!
                   .copyWith(color: kBlack.withOpacity(0.5)),
             ),
           ),

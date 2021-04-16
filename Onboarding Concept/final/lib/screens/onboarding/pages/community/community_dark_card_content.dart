@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-import 'package:onboarding_concept/constants.dart';
+import '../../../../constants.dart';
 
 class CommunityDarkCardContent extends StatelessWidget {
+  const CommunityDarkCardContent();
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
+      children: const <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: kPaddingL),
+          padding: EdgeInsets.only(top: kPaddingL),
           child: Icon(
             Icons.brush,
             color: kWhite,
@@ -17,7 +19,7 @@ class CommunityDarkCardContent extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom: kPaddingL),
+          padding: EdgeInsets.only(bottom: kPaddingL),
           child: Icon(
             Icons.camera_alt,
             color: kWhite,
@@ -25,7 +27,7 @@ class CommunityDarkCardContent extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: kPaddingL),
+          padding: EdgeInsets.only(top: kPaddingL),
           child: Icon(
             Icons.straighten,
             color: kWhite,

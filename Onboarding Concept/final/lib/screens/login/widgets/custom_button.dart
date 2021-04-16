@@ -28,10 +28,12 @@ class CustomButton extends StatelessWidget {
         minWidth: double.infinity,
       ),
       child: image != null
-          ? OutlineButton(
-              color: color,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4.0),
+          ? OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                primary: color,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
               ),
               child: Row(
                 children: <Widget>[
@@ -48,11 +50,13 @@ class CustomButton extends StatelessWidget {
               ),
               onPressed: onPressed,
             )
-          : FlatButton(
-              color: color,
-              padding: const EdgeInsets.all(kPaddingM),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4.0),
+          : TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: color,
+                padding: const EdgeInsets.all(kPaddingM),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
               ),
               child: Text(
                 text,

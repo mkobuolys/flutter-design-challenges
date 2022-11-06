@@ -9,3 +9,9 @@
 ## Rotary passcode
 
 <img src="assets/rotary-passcode.gif" alt="Rotary passcode" width="600">
+
+---
+
+## Volume shooter
+
+<img src="assets/volume-shooter.gif" alt="Volume shooter" width="600">

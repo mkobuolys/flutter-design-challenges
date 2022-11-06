@@ -1,4 +1,4 @@
-# Flutter Design Challenges
+# Flutter UI Design Challenges
 
 ## Onboarding concept
 

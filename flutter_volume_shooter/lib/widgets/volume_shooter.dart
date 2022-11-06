@@ -147,7 +147,8 @@ class _VolumeShooterState extends State<VolumeShooter>
     _controller.forward().whenComplete(() {
       _sliderThumbAnimation.removeListener(setSliderThumbPosition);
       _iconAngleAnimation.removeListener(setVolumeIconAngle);
-      widget.onVolumeChanged(maxX / width * 100);
+
+      widget.onVolumeChanged((maxX - _xOffset) / (width - _xOffset) * 100);
     });
   }
 

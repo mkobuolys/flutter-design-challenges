@@ -1,5 +1,3 @@
 # flutter_rotary_passcode
 
-Check the full demo [here](https://twitter.com/mkobuolys/status/1587417971743408129).
-
-<img src="../assets/rotary-passcode-demo.gif" alt="Rotary passcode demo">
+https://user-images.githubusercontent.com/17415795/200200009-62e4d300-1b54-46f1-9bba-40aa96588444.mp4

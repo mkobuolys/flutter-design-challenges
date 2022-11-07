@@ -17,6 +17,7 @@ class _App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Flutter Rotary Passcode',
       theme: Theme.of(context).copyWith(
         textTheme: GoogleFonts.kanitTextTheme(),
       ),

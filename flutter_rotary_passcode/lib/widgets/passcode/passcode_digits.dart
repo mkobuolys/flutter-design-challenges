@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:local_hero/local_hero.dart';
 
 import '../../utils.dart';
 
@@ -34,13 +33,11 @@ class PasscodeDigit {
 
 class PasscodeDigits extends StatelessWidget {
   const PasscodeDigits({
-    required this.animationDuration,
     required this.passcodeDigitValues,
     required this.simpleInputMode,
     super.key,
   });
 
-  final Duration animationDuration;
   final List<PasscodeDigit> passcodeDigitValues;
   final bool simpleInputMode;
 
@@ -52,17 +49,13 @@ class PasscodeDigits extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           for (var i = 0; i < passcodeDigitValues.length; i++)
-            LocalHero(
-              tag: 'passcode_digit_$i',
-              child: _PasscodeDigitContainer(
-                animationDuration: animationDuration,
-                backgroundColor: passcodeDigitValues[i].backgroundColor,
-                fontColor: passcodeDigitValues[i].fontColor,
-                digit: passcodeDigitValues[i].value,
-                size: simpleInputMode
-                    ? _passcodeDigitSizeBig
-                    : _passcodeDigitSizeSmall,
-              ),
+            _PasscodeDigitContainer(
+              backgroundColor: passcodeDigitValues[i].backgroundColor,
+              fontColor: passcodeDigitValues[i].fontColor,
+              digit: passcodeDigitValues[i].value,
+              size: simpleInputMode
+                  ? _passcodeDigitSizeBig
+                  : _passcodeDigitSizeSmall,
             ),
         ].addBetween(
           SizedBox(
@@ -77,14 +70,12 @@ class PasscodeDigits extends StatelessWidget {
 
 class _PasscodeDigitContainer extends StatelessWidget {
   const _PasscodeDigitContainer({
-    required this.animationDuration,
     required this.backgroundColor,
     required this.fontColor,
     required this.digit,
     required this.size,
   });
 
-  final Duration animationDuration;
   final Color backgroundColor;
   final Color fontColor;
   final int? digit;
@@ -103,11 +94,9 @@ class _PasscodeDigitContainer extends StatelessWidget {
         color: Colors.black,
         shape: BoxShape.circle,
       ),
-      child: AnimatedContainer(
+      child: Container(
         height: containerSize,
         width: containerSize,
-        duration: animationDuration,
-        curve: Curves.easeInOut,
         decoration: BoxDecoration(
           color: backgroundColor,
           shape: BoxShape.circle,

@@ -8,20 +8,14 @@ import 'constants.dart';
 class RotaryDialForegroundPainter extends CustomPainter {
   const RotaryDialForegroundPainter({
     required this.numberRadiusFromCenter,
-    required this.startAngleOffset,
-    required this.sweepAngle,
   });
 
   final double numberRadiusFromCenter;
-  final double startAngleOffset;
-  final double sweepAngle;
 
   @override
   void paint(Canvas canvas, Size size) {
-    const firstDialNumberPosition = RotaryDialConstants.firstDialNumberPosition;
     const ringWidth = RotaryDialConstants.rotaryRingWidth;
 
-    final angleOffset = startAngleOffset * firstDialNumberPosition;
     final paint = Paint()
       ..color = const Color.fromARGB(255, 255, 255, 255)
       ..strokeCap = StrokeCap.round
@@ -35,15 +29,15 @@ class RotaryDialForegroundPainter extends CustomPainter {
           center: size.centerOffset,
           radius: size.width / 2 - ringWidth / 2,
         ),
-        angleOffset + firstDialNumberPosition,
-        sweepAngle,
+        RotaryDialConstants.firstDialNumberPosition,
+        RotaryDialConstants.maxRotaryRingSweepAngle,
         false,
         paint,
       );
 
     for (int i = 0; i < 10; i++) {
       final offset = Offset.fromDirection(
-        angleOffset + math.pi * (-30 - i * 30) / 180,
+        math.pi * (-30 - i * 30) / 180,
         numberRadiusFromCenter,
       );
 
@@ -58,13 +52,7 @@ class RotaryDialForegroundPainter extends CustomPainter {
       size.centerOffset +
           Offset.fromDirection(math.pi / 6, numberRadiusFromCenter),
       ringWidth / 6,
-      Paint()
-        ..color = Color.fromRGBO(
-          255,
-          255,
-          255,
-          sweepAngle / RotaryDialConstants.maxRotaryRingSweepAngle,
-        ),
+      Paint()..color = const Color.fromRGBO(255, 255, 255, 1.0),
     );
 
     canvas.restore();
@@ -72,7 +60,5 @@ class RotaryDialForegroundPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(RotaryDialForegroundPainter oldDelegate) =>
-      oldDelegate.numberRadiusFromCenter != numberRadiusFromCenter &&
-      oldDelegate.startAngleOffset != startAngleOffset &&
-      oldDelegate.sweepAngle != sweepAngle;
+      oldDelegate.numberRadiusFromCenter != numberRadiusFromCenter;
 }

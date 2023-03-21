@@ -21,15 +21,7 @@ class _App extends StatelessWidget {
       theme: Theme.of(context).copyWith(
         textTheme: GoogleFonts.kanitTextTheme(),
       ),
-      home: PasscodeInputView(
-        expectedCode: '6942',
-        onSuccess: () {
-          // Handle valid passcode here
-        },
-        onError: () {
-          // Handle invalid passcode here
-        },
-      ),
+      home: const PasscodeInputView(expectedCode: '6942'),
     );
   }
 }

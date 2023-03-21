@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:local_hero/local_hero.dart';
 
 import 'rotary_dial_painter/constants.dart';
 
@@ -17,23 +16,20 @@ class DialNumber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LocalHero(
-      tag: 'digit_$number',
-      child: Container(
-        height: _dialNumberRadius * 2,
-        width: _dialNumberRadius * 2,
-        alignment: Alignment.center,
-        decoration: const BoxDecoration(
-          color: Colors.black,
-          shape: BoxShape.circle,
-        ),
-        child: Text(
-          '$number',
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-        ),
+    return Container(
+      height: _dialNumberRadius * 2,
+      width: _dialNumberRadius * 2,
+      alignment: Alignment.center,
+      decoration: const BoxDecoration(
+        color: Colors.black,
+        shape: BoxShape.circle,
+      ),
+      child: Text(
+        '$number',
+        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
       ),
     );
   }

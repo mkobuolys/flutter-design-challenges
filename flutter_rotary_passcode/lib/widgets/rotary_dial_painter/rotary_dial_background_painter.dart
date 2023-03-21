@@ -6,17 +6,13 @@ import '../../utils.dart';
 import 'constants.dart';
 
 class RotaryDialBackgroundPainter extends CustomPainter {
-  const RotaryDialBackgroundPainter({
-    required this.opacity,
-  });
-
-  final double opacity;
+  const RotaryDialBackgroundPainter();
 
   @override
   void paint(Canvas canvas, Size size) {
     const ringWidth = RotaryDialConstants.rotaryRingWidth;
     final paint = Paint()
-      ..color = Color.fromRGBO(0, 0, 0, opacity)
+      ..color = const Color.fromRGBO(0, 0, 0, 1.0)
       ..strokeWidth = ringWidth
       ..style = PaintingStyle.stroke;
 
@@ -33,6 +29,5 @@ class RotaryDialBackgroundPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(RotaryDialBackgroundPainter oldDelegate) =>
-      oldDelegate.opacity != opacity;
+  bool shouldRepaint(RotaryDialBackgroundPainter oldDelegate) => false;
 }

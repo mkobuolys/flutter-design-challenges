@@ -119,7 +119,7 @@ class _PasscodeDigitContainer extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: fontColor,
                         fontWeight: FontWeight.bold,
-                        height: 1.2,
+                        height: 1.0,
                       ),
                 ),
               )
